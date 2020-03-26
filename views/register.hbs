@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>head}}
+</head>
+<body data-spy="scroll" data-target=".fixed-top">
+    
+ 
+    
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <!-- Text Logo - Use this if you don't have a graphic logo -->
+        <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Evolo</a> -->
+
+        <!-- Image Logo -->
+        <a class="navbar-brand logo-image" style="color:black; text-decoration:none;" href="/">
+            {{!-- <img src="images/logo.svg" alt="alternative"> --}}
+            MyNoticePage
+            </a>
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-awesome fas fa-bars"></span>
+            <span class="navbar-toggler-awesome fas fa-times"></span>
+        </button>
+        <!-- end of mobile menu toggle button -->
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto">
+                {{!-- <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#header">SignUp <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#">SignIn</a>
+                </li>
+              --}}
+
+                <!-- Dropdown Menu -->          
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle page-scroll" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">START HERE</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/login"><span class="item-text">LOGIN</span></a>
+                        <div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="/register"><span class="item-text">SIGN UP</span></a>
+                    </div>
+                </li>
+               
+            </ul>
+            {{!-- <span class="nav-item social-icons">
+                <span class="fa-stack">
+                    <a href="#your-link">
+                        <i class="fas fa-circle fa-stack-2x facebook"></i>
+                        <i class="fab fa-facebook-f fa-stack-1x"></i>
+                    </a>
+                </span>
+                <span class="fa-stack">
+                    <a href="#your-link">
+                        <i class="fas fa-circle fa-stack-2x twitter"></i>
+                        <i class="fab fa-twitter fa-stack-1x"></i>
+                    </a>
+                </span>
+            </span> --}}
+        </div>
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-8 col-xs-5 mx-auto lbox">
+                        <div class="text-center llabel">
+                            <span>REGISTER</span>
+                        </div>
+                        <form action="/register" method="POST">
+                                         <div class="form-group">
+                                <input type="text" name="organisation" class="form-control-input" id="cemail" required placeholder="Cause/Organization/Group">
+                                {{!-- <label class="label-control" for="cpassword">Cause/Organization/Group</label> --}}
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control-input" id="cemail" required placeholder="Email">
+                               
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control-input" id="cemail" required placeholder="Password">
+                        
+                                <div class="help-block with-errors"></div>
+                            </div>
+              
+                               <div class="form-group">
+                                <input type="password" name="confirmPassword" class="form-control-input" id="cemail" required placeholder="Confirm password ">
+                                 
+                                <div class="help-block with-errors"></div>
+                            </div>
+                         
+
+
+                            <div class="form-group">
+                                <button class="text-center" type="submit" style="padding: 10px; border: 1px solid blue; background:none">REGISTER</button>
+                            </div>
+                        </form>
+                    </div> <!-- end of col -->
+              
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header --> 
+ 
+</body>
+</html>
