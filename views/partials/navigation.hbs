@@ -1,0 +1,20 @@
+ <!-- Dropdown Menu -->
+                {{#unless isAuthenticated}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle page-scroll" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">START HERE</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/login"><span class="item-text">LOGIN</span></a>
+                        <div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="/register"><span class="item-text">SIGN UP</span></a>
+                    </div>
+                </li>
+                {{/unless}}
+                <!-- end of dropdown menu -->
+             {{#if isAuthenticated}}
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="/logout">Logout</a>
+                </li>
+              {{/if}}  

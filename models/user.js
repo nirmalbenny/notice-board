@@ -18,6 +18,19 @@ class User{
             Console.log(err);
         });
     }
+
+    static findOne(query){
+        const db = getDb();
+        return db.collection('users').findOne(query)
+        .then(result => {
+            return result;
+        })
+        .catch(err=>{
+            console.log(err);
+            console.log("Error in method User.findOne() ");
+        });
+    }
+
     static isExisting(emailID){
         const db = getDb();
        return db.collection('users').count({email:emailID})
@@ -34,7 +47,6 @@ class User{
             console.log(err);
         })
         
-
     }
 }
 
