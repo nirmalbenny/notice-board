@@ -2,8 +2,10 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const hbs = require('express-handlebars');
-const session = require('express-session');
+const session = require('express-session'); 
 const MongoDBStore = require('connect-mongodb-session')(session);
+const csrf = require('csurf');
+
 const app = express();
 const MongoConnect = require('./util/database').mongoConnect;
 const userRoutes = require('./routes/user');
@@ -35,6 +37,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // setting up session storage on mongoDB
 
+//initalizing csrf module....
+const csrfProtection = csrf();
+
 //configure handlebar
 app.engine('hbs',hbs({
     extname: 'hbs',
@@ -44,7 +49,8 @@ app.engine('hbs',hbs({
 }))
 app.set('view engine', 'hbs');
 app.set('views',path.join(__dirname,'views'))
- 
+ //csrf middleware
+app.use(csrfProtection);
 // user routes
 app.use(userRoutes);
 //admin routes

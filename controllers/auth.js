@@ -6,13 +6,17 @@ exports.showLoginPage = (req, res, next) => {
    {
        return res.redirect('/dashboard');
    }
-    res.render("login"); 
+    res.render("login",{
+        csrfToken : req.csrfToken()
+    }); 
 }
 exports.showSignupPage = (req, res, next) => {
     if(req.session.isLoggedIn){
         return res.redirect('/dashboard');
     }
-    res.render("register");
+    res.render("register",{
+        csrfToken : req.csrfToken()
+    });
 }
 exports.registerUser = (req, res, next) => {
 
@@ -31,7 +35,19 @@ exports.registerUser = (req, res, next) => {
                 user.save()
                 .then(result => {
                     console.log(" -----Added New User------");
-                    res.send(user.email + " added");
+                    //logging in after registeration..... 
+                    req.session.isLoggedIn = true;
+                    req.session.user = user;
+                    return req.session.save(err => {
+                        if(err)
+                        {
+                            console.log(user.email + "EXIST >>>>>>>>>> ")
+                            console.log(" COULDN'T SAVE SESSION INTO DATASTORE ");
+                            return res.redirect('/login');
+                        }
+                        console.log("NEW SESSION CREATED");
+                        return res.redirect('/dashboard');
+                    });
                 })
                 .catch(err => {
                     console.log(">>>>>>>> AADING NEW USER FAILED<<<<<<<<<");
