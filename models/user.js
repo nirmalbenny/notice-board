@@ -8,7 +8,8 @@ class User{
     }
     save(){
         const db = getDb();
-         return db.collection('users').insertOne(this)
+         return db.collection('users')
+        .insertOne(this)
         .then(result =>{
             console.log("-------then inside save----");
             console.log(result);
@@ -16,6 +17,24 @@ class User{
         .catch(err=>{
             Console.log(err);
         });
+    }
+    static isExisting(emailID){
+        const db = getDb();
+       return db.collection('users').count({email:emailID})
+        .then(count => {
+            if(count>0){
+                return true;
+            }
+            else{
+
+                return false;
+            }
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+        
+
     }
 }
 
