@@ -18,5 +18,6 @@ exports.userDashboard = (req,res,next) => {
    
     return res.render("userDashboard",{
         isAuthenticated : true,
+        route : req.url
     });
 }
