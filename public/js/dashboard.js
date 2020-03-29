@@ -4,6 +4,13 @@ const create = document.getElementById("submitNow");
 const csrf = document.getElementById("key").value;
 const notify =document.getElementById('notify');
 notify.style.display="none";
+function uiAction(data){
+    console.log("data = ",data);
+    if(data.status=="success")
+    {
+        document.getElementById('animatedModal').style.display="none";
+    }
+}
 class Ndata {
     constructor(urlname, title, emailContact, phoneContact)
     {
@@ -27,12 +34,11 @@ class Ndata {
             })
         })
         .then((response)=>{
-            response.json()
-            .then((d)=>{
-                
-                return d;
-            })
-          
+           return response.json()
+        })
+        .then(data => {
+            
+           uiAction(data);
         })
         .catch(err => {
             console.log(err);
@@ -47,7 +53,7 @@ const checkAvailability = (event) =>{
 
  
      console.log("query : ",search);
-     fetch('/check-url',{
+    fetch('/check-url',{
         method : 'POST',
         headers : {
             'csrf-token' : csrf,
@@ -58,14 +64,14 @@ const checkAvailability = (event) =>{
               'searchUrl' : search,
           
         })
-     }).then(result => {
-            
+     })
+    .then(result => {       
             return  result.json();
         })
-        .then((data) => {
+    .then((data) => {
             console.log(data);
         })
-        .catch(err => {
+    .catch(err => {
             console.log(err);
             console.log("CHECK URL FAILED");
         })
@@ -86,8 +92,6 @@ const checkAvailability = (event) =>{
         }
         notify.innerText="Name is available";
      }
-   
-   
  }
  
  const createNow = (event) =>{
@@ -98,10 +102,9 @@ const checkAvailability = (event) =>{
     console.log(email,",",title);
  
     //   message("it is available","show",'failed');
-    const NB = new Ndata(url,title,email,phone);
-
-     NB.sendData();
-
+    const NB = new Ndata(url,title,email,phone);    
+    NB.sendData();
+    
  }
 
 create.addEventListener('click',createNow);
