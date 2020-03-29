@@ -21,4 +21,21 @@ class NoticeBoard{
 
 
     }
+    static isExisting(uri){
+        const db = getDb();
+       return db.collection('notice-boards').count({urlname:uri})
+        .then(count => {
+            if(count>0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+        
+    }
 }
+module.exports = NoticeBoard;

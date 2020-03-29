@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const hbs = require('express-handlebars');
 const session = require('express-session'); 
+const cookieParser = require('cookie-parser');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 
@@ -25,18 +26,20 @@ app.use(session({
     secret : 'mysecretstring',
     resave : false,
     saveUninitialized : false,
-    store : sessionStore
+    store : sessionStore,
+    cookie: { maxAge: 720000 }
 })); 
 
 
 //body parser
 app.use(bodyParser.urlencoded({extended : false}));
+app.use(bodyParser.json());
 
 // setting up static file folder----------------------
 app.use(express.static(path.join(__dirname, 'public')));
 
 // setting up session storage on mongoDB
-
+ 
 //initalizing csrf module....
 const csrfProtection = csrf();
 
@@ -49,8 +52,20 @@ app.engine('hbs',hbs({
 }))
 app.set('view engine', 'hbs');
 app.set('views',path.join(__dirname,'views'))
+
+// Cross Origin Request | CORS
+app.use((req,res,next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods','GET, POST, DELETE, PUT, PATCH');
+    res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization');
+    next();
+});
+
+
  //csrf middleware
 app.use(csrfProtection);
+
+
 // user routes
 app.use(userRoutes);
 //admin routes
