@@ -52,3 +52,13 @@ exports.checkUrl = (req, res, next) => {
 
 
 }
+
+exports.postAddNoticeBoard = (req,res,next) => {
+    console.log(req.body);
+     
+    const nb = new Noticeboard(req.session.user._id,req.body.urlname,req.body.title,req.body.emailContact,req.body.phoneContact);
+   nb.save();
+    res.status(200).json({
+        status : "Double okey"
+    });
+}

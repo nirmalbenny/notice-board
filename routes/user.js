@@ -4,6 +4,7 @@ const userController = require('../controllers/users');
 router.get('/dashboard',userController.userDashboard);
 router.get('/boards/:boardName',userController.showUserBoard);
 router.post('/check-url',userController.checkUrl);
+router.post('/add-noticeboard',userController.postAddNoticeBoard);
 
 router.get('/',userController.showHomePage);
 

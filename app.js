@@ -27,13 +27,13 @@ app.use(session({
     resave : false,
     saveUninitialized : false,
     store : sessionStore,
-    cookie: { maxAge: 720000 }
+    cookie: { maxAge: 72000000 }
 })); 
 
-
+app.use(bodyParser.json());
 //body parser
 app.use(bodyParser.urlencoded({extended : false}));
-app.use(bodyParser.json());
+
 
 // setting up static file folder----------------------
 app.use(express.static(path.join(__dirname, 'public')));

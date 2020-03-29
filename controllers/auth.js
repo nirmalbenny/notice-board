@@ -34,10 +34,10 @@ exports.registerUser = (req, res, next) => {
                 const user = new User(email, organisation,hashedPassword);
                 user.save()
                 .then(result => {
-                    console.log(" -----Added New User------");
+                    console.log(" -----Added New User------",result);
                     //logging in after registeration..... 
                     req.session.isLoggedIn = true;
-                    req.session.user = user;
+                    req.session.user = result;
                     return req.session.save(err => {
                         if(err)
                         {
@@ -84,7 +84,7 @@ exports.userLogin = (req,res,next) => {
             console.log("----- LOGIN FAILED :USER DONT EXIST -------");
             return res.redirect('/login');
         }
-        console.log(user.email + " EXIST >>>>>>>>>> ")
+        console.log(user._id + " logged in >>>>>>> ")
         bcrypt.compare(password,user.password)
         .then((passwordMatches) => {
             console.log(" Password matched : " + passwordMatches);

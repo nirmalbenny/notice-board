@@ -13,7 +13,7 @@ class NoticeBoard{
         return db.collection('notice-board')
         .insertOne(this)
         .then(result=>{
-            console.log("-------then inside save----");
+            console.log("-------nnoticeboard saved----");
         })
         .catch(err=>{
             console.log("NoticeBoard Creation Failed");

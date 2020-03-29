@@ -2241,30 +2241,37 @@ a,a:hover{
  
 padding: none;
 margin: none;
-background-color: #ebebeb;
+/* background-color: #ebebeb; */
 
 margin-top: 35%;
 }
 
-.tools > input{
+.tools  input{
 	box-sizing: border-box;
 	padding: 2%;
-	 width: 69.30%;
-	 border: none;
+	 width: 100%;
+ 
 	 outline: none;
-	 background-color: #ebebeb;
+	 border: none;
+	 border: 1px solid balck;
+	 margin-bottom: 5px;
 }
-.tools > button{
+.tools  button{
 	box-sizing: border-box;
 	background-color: #12d45d;
 	color: white;
  outline: none;
  padding: 2%;
  border: none;
- width: 30%;
+ width: 100%;
+ margin-top: 3px;
 
 }
-.tools>button:hover{
+.tools button:hover{
 	background-color: gold;
 	color:brown;
+}
+.ff{
+	padding-top: 10px;
+	border-bottom: 1px solid grey;
 }

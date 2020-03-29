@@ -109,10 +109,29 @@
                    <div class="row">
                        <div class="col-lg-6 mx-auto">
                         <div class="tools">
-                          <input type="search"  name="search" id="search">
+                          <input type="search" required placeholder="Notice Board Url"  name="search" id="search">
                          <button id="searchbtn"> CHECK AVAILABILITY </button>
-                         <input id="key" type="hidden" name="_csrf" value="{{csrfToken}}">
+                         <span id="notify"></span>
+                         <input id="key" type="hidden"  name="_csrf" value="{{csrfToken}}">
+                     
+                         <div class="ff">
+                                 <input type="text" required name="title" id="title" placeholder="Notice Board Title">
+                      
+                         </div>
+                         <div class="ff">
+                                 <input type="number" required name="number" id="number" placeholder="Contact Number">
+                      
+                         </div>
+                          <div class="ff">
+                                 <input type="email" required name="email" id="conemail" placeholder="Contact Email">
+                      
+                         </div>
+                         <div class="ff">
+                             <button id="submitNow"> CREATE NOW </button>
+                         </div>
+
                         </div>
+                        
                        </div>
                    </div>
         </div>
