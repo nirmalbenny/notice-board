@@ -62,3 +62,31 @@ exports.postAddNoticeBoard = (req,res,next) => {
         status : "success"
     });
 }
+ 
+exports.getListPage = (req,res,next) => {
+    Noticeboard.getAll(req.session.user._id)
+   .then(data => {
+       console.log(data);
+        return res.render('listboards',{ "data" : data});
+   })
+   .catch( err => {
+        console.log(err);
+        return res.send("dwdw");
+   });
+    
+    
+}
+
+exports.getNBList = (req,res,next) =>{
+    Noticeboard.getAll(req.session.user._id)
+    .then(data => {
+        console.log(data);
+         return res.status(200).json(data);
+    })
+    .catch( err => {
+         console.log(err);
+         return res.send("dwdw");
+    });
+     
+    
+}

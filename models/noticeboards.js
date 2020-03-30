@@ -21,6 +21,20 @@ class NoticeBoard{
 
 
     }
+    static getAll(userid){
+        const db = getDb();
+        return db.collection('notice-board')
+        .find({userid : userid})
+        .project({"userid" : 0})
+        .toArray()
+        .then(data => {
+            return data
+        })
+        .catch(err => {
+            console.log(err);
+        });
+             
+    }
     static isExisting(uri){
         const db = getDb();
        return db.collection('notice-boards').count({urlname:uri})

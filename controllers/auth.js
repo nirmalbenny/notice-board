@@ -46,7 +46,7 @@ exports.registerUser = (req, res, next) => {
                             return res.redirect('/login');
                         }
                         console.log("NEW SESSION CREATED");
-                        return res.redirect('/dashboard');
+                        return res.redirect('/dashboard-list');
                     });
                 })
                 .catch(err => {
@@ -101,7 +101,7 @@ exports.userLogin = (req,res,next) => {
                         return res.redirect('/login');
                     }
                     console.log("NEW SESSION CREATED");
-                    return res.redirect('/dashboard');
+                    return res.redirect('/dashboard-list');
                 });
             }
             else{

@@ -8,7 +8,7 @@ function uiAction(data){
     console.log("data = ",data);
     if(data.status=="success")
     {
-        document.getElementById('animatedModal').style.display="none";
+        document.getElementById('animatedModademo01l').style.display="none";
     }
 }
 class Ndata {
