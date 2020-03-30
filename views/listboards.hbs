@@ -7,10 +7,8 @@
     <meta name="csrf-token" value="{{csrfToken}}">
     {{/if}}
      <script src="/js/dashboard.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="/js/animatedModal.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+  <meta name="csrf" content="{{token}}">
+  <script src="/js/notiflix.js"></script>
 </head>
 <body data-spy="scroll" data-target=".fixed-top">
     
@@ -138,6 +136,10 @@ display: block;
 
 
 
+ 
+<!-- jQuery Modal -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="/js/bootstrap.min.js"></script>
  
 
   <script src="/js/dashboard-list.js"></script>

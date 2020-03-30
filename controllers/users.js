@@ -67,7 +67,7 @@ exports.getListPage = (req,res,next) => {
     Noticeboard.getAll(req.session.user._id)
    .then(data => {
        console.log(data);
-        return res.render('listboards',{ "data" : data});
+        return res.render('listboards',{ token : req.csrfToken()});
    })
    .catch( err => {
         console.log(err);
@@ -80,7 +80,7 @@ exports.getListPage = (req,res,next) => {
 exports.getNBList = (req,res,next) =>{
     Noticeboard.getAll(req.session.user._id)
     .then(data => {
-        console.log(data);
+
          return res.status(200).json(data);
     })
     .catch( err => {
@@ -89,4 +89,23 @@ exports.getNBList = (req,res,next) =>{
     });
      
     
+}
+
+exports.deleteNB = (req, res, next) =>{
+    Noticeboard.deleteOne(req.body.id)
+    .then(result => {
+        console.log(result)
+        console.log(req.body);
+        return res.status(200).json({
+            "status" : "success"
+        });
+    })
+    .catch(err => {
+        return res.status(200).json({
+            "status" : "failed"
+        });
+        console.log(err);
+    });
+   
+
 }

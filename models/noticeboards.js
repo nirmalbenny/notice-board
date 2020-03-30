@@ -1,4 +1,5 @@
 const getDb = require('../util/database').getDb;
+const mongo = require('mongodb')
 class NoticeBoard{
     constructor(userid,urlname,title,emailContact,phoneContact){
         this.userid = userid;
@@ -13,13 +14,22 @@ class NoticeBoard{
         return db.collection('notice-board')
         .insertOne(this)
         .then(result=>{
-            console.log("-------nnoticeboard saved----");
+            console.log("-------noticeboard saved----");
         })
         .catch(err=>{
             console.log("NoticeBoard Creation Failed");
         });
 
 
+    }
+    static deleteOne(id){
+        const db = getDb();
+        return db.collection('notice-board').deleteOne({_id: new mongo.ObjectId(id) })
+              .then(result =>{
+                  return result;
+              })
+              .catch(err => console.log(err));
+                
     }
     static getAll(userid){
         const db = getDb();
