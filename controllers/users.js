@@ -29,9 +29,10 @@ exports.checkUrl = (req, res, next) => {
         return res.status(500).json({ "status" : "access denied"});
     }
     const url = req.body.searchUrl; // get search query from search field
+    console.log(" URL TO BE CHECKED : ",url);
     Noticeboard.isExisting(url)
     .then((isTaken) =>{
-        console.log(" noticebaord name is taken >>>>>>>>>>",isTaken);
+        console.log("IS TAKEN : ",isTaken);
         if(isTaken){
             res.status(200).json({
                 "status" : "success",
@@ -85,7 +86,7 @@ exports.getNBList = (req,res,next) =>{
     })
     .catch( err => {
          console.log(err);
-         return res.send("dwdw");
+         return res.send("gteNBlist error");
     });
      
     

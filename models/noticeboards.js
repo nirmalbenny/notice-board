@@ -47,8 +47,9 @@ class NoticeBoard{
     }
     static isExisting(uri){
         const db = getDb();
-       return db.collection('notice-boards').count({urlname:uri})
+       return db.collection('notice-board').count({ "urlname" :uri})
         .then(count => {
+            console.log("Count : ",count);
             if(count>0){
                 return true;
             }
