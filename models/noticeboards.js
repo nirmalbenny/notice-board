@@ -22,6 +22,24 @@ class NoticeBoard{
 
 
     }
+    static findOne(id){
+        try{
+            const db= getDb();
+            return db.collection('notice-board')
+             .findOne({"_id" : new mongo.ObjectId(id)})
+             .then(d => {
+                console.log(d);
+                console.log("-------------------------------------------->>");
+                return d;
+             })
+            .catch(err=>{
+                console.log(err);
+            })
+        }catch(err)
+        {
+            console.log(err);
+        }
+    }
     static deleteOne(id){
         const db = getDb();
         return db.collection('notice-board').deleteOne({_id: new mongo.ObjectId(id) })
@@ -30,6 +48,38 @@ class NoticeBoard{
               })
               .catch(err => console.log(err));
                 
+    }
+    static updateNB(query,userID){
+        const db=getDb();
+        console.log(" QUERY : ",query._id);
+        return db.collection('notice-board').updateOne(
+            { 
+                userid: new mongo.ObjectID(userID),
+                _id: new mongo.ObjectID(query._id)
+             },
+            {
+             $set : { 
+                     'title': query.title,
+                     'emailContact' : query.emailContact,
+                     'phoneContact': query.phoneContact 
+                   }
+           })
+            .then(data => {
+                if(data.modifiedCount>0){
+                    return {
+                        status : "success"
+                    }
+                }else{
+                    return {
+                        status : "failed"
+                    }
+                }
+                
+            })
+            .catch(err =>{
+                console.log(err);
+            });
+
     }
     static getAll(userid){
         const db = getDb();

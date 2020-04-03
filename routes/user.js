@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/users');
+router.get('/get-one-nb/:id',userController.getOneNb);
+router.post('/update-nb',userController.postUpdateNb);
 router.post('/delete-nb',userController.deleteNB);
 router.get('/dashboard-list',userController.getListPage);
 router.get('/dashboard',userController.userDashboard);
